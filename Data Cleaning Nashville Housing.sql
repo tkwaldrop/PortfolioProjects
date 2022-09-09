@@ -16,13 +16,13 @@ SELECT SaleDate, CONVERT(Date, SaleDate)
 FROM PortfolioProject.dbo.NashvilleHousing;
 
 UPDATE NashvilleHousing
-SET SaleDate =  CONVERT(Date, SaleDate);
+SET SaleDate =  CONVERT(Date,SaleDate);
 
 ALTER TABLE NashvilleHousing
 ADD SaleDateConverted Date;
 
 UPDATE NashvilleHousing
-SET SaleDateConverted =  CONVERT(Date, SaleDate);
+SET SaleDateConverted = CONVERT(Date,SaleDate);
 
 
 
@@ -33,7 +33,7 @@ SET SaleDateConverted =  CONVERT(Date, SaleDate);
 SELECT *
 FROM PortfolioProject.dbo.NashvilleHousing
 --WHERE PropertyAddress IS NULL;
-ORDER BY ParcelID
+ORDER BY ParcelID;
 
 
 SELECT a.ParcelID, a.PropertyAddress, b.ParcelID, b.PropertyAddress, ISNULL(a.PropertyAddress, b.PropertyAddress)
@@ -59,14 +59,14 @@ WHERE a.PropertyAddress IS NULL;
 -- Breaking Out Address into Individual Columns (Address, City, State)
 
 SELECT PropertyAddress
-FROM PortfolioProject.dbo.NashvilleHousing
---WHERE PropertyAddress IS NULL;
+FROM PortfolioProject.dbo.NashvilleHousing;
+--WHERE PropertyAddress IS NULL
 --ORDER BY ParcelID
 
 SELECT
 SUBSTRING(PropertyAddress, 1, CHARINDEX(',', PropertyAddress) -1) AS Address,
 SUBSTRING(PropertyAddress, CHARINDEX(',', PropertyAddress) +1,LEN(PropertyAddress)) AS City
-FROM PortfolioProject.dbo.NashvilleHousing
+FROM PortfolioProject.dbo.NashvilleHousing;
 
 
 ALTER TABLE NashvilleHousing
@@ -82,12 +82,12 @@ UPDATE NashvilleHousing
 SET PropertySplitCity =  SUBSTRING(PropertyAddress, CHARINDEX(',', PropertyAddress) +1,LEN(PropertyAddress));
 
 SELECT *
-FROM PortfolioProject.dbo.NashvilleHousing
+FROM PortfolioProject.dbo.NashvilleHousing;
 
 
 
 SELECT OwnerAddress
-FROM PortfolioProject.dbo.NashvilleHousing
+FROM PortfolioProject.dbo.NashvilleHousing;
 
 
 SELECT
@@ -178,8 +178,9 @@ WHERE row_num > 1;
 
 
 SELECT *
-FROM PortfolioProject.dbo.NashvilleHousing
+FROM PortfolioProject.dbo.NashvilleHousing;
 
 
 ALTER TABLE PortfolioProject.dbo.NashvilleHousing
-DROP COLUMN OwnerAddress, TaxDistrict, PropertyAddress, SaleDate
+DROP COLUMN OwnerAddress, TaxDistrict, PropertyAddress, SaleDate;
+
